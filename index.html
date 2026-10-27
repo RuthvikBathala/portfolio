@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Ruthvik Bathala — AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF9F6; --bg2:#F1EFE9; --surface:#FFFFFF; --surface2:#F7F6F2;
+    --ink:#12161A; --muted:#5E6873; --line:#E3E0D6; --line2:#D6D2C6;
+    --teal:#0F766E; --teal-bg:#E6F2EF; --amber:#B45309; --amber-bg:#FEF3C7;
+    --radius:18px;
+    --shadow:0 12px 30px rgba(18,22,26,.07);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0E1214; --bg2:#12181A; --surface:#171D20; --surface2:#1C2326;
+      --ink:#EDEBE6; --muted:#9AA6AD; --line:#262E32; --line2:#323C40;
+      --teal:#2DD4BF; --teal-bg:#12312E; --amber:#FBBF24; --amber-bg:#2E2512;
+      --shadow:0 12px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important; transition:none!important} }
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  /* nav */
+  .nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:800;letter-spacing:-.02em}
+  .mark{width:36px;height:36px;border-radius:9px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:600}
+  .nav-links{display:flex;gap:22px;font-size:14px;font-weight:600}
+  .nav-links a{text-decoration:none;color:var(--muted)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{font-size:13px;font-weight:700;text-decoration:none;border:1px solid var(--line2);padding:8px 13px;border-radius:999px;background:var(--surface)}
+  @media(max-width:640px){ .nav-links{display:none} }
+  /* hero */
+  .hero{padding:56px 0 28px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);background:var(--teal-bg);border:1px solid color-mix(in srgb, var(--teal) 25%, transparent);padding:6px 10px;border-radius:999px;font-weight:600}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+  h1{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(44px,7vw,76px);line-height:.98;letter-spacing:-.02em;margin:18px 0 14px;max-width:820px}
+  h1 em{font-style:italic;color:var(--teal)}
+  .lede{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:700px;margin:0}
+  .lede strong{color:var(--ink)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:14px;padding:12px 18px;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--bg)}
+  .btn.secondary{background:transparent;color:var(--ink);border-color:var(--line2)}
+  .hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:36px}
+  .meta-cell{background:var(--surface);padding:16px}
+  .meta-cell b{display:block;font-size:15px;line-height:1.25}
+  .meta-cell span{font-size:12.5px;color:var(--muted);line-height:1.4;display:block;margin-top:3px}
+  @media(max-width:760px){ .hero-meta{grid-template-columns:1fr 1fr} }
+  /* sections */
+  section{padding:34px 0}
+  .sec-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+  h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:32px;line-height:1.05;margin:0;letter-spacing:-.01em}
+  .sec-head p{margin:6px 0 0;color:var(--muted);max-width:560px;font-size:15px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{appearance:none;border:1px solid var(--line2);background:var(--surface);color:var(--muted);font:inherit;font-size:13px;font-weight:700;padding:7px 12px;border-radius:999px;cursor:pointer}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  /* projects */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:820px){ .grid{grid-template-columns:1fr} }
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+  .card[hidden]{display:none}
+  .visual{height:168px;border-bottom:1px solid var(--line);padding:16px;display:flex;flex-direction:column;justify-content:space-between}
+  .v-teal{background:linear-gradient(135deg,#0F766E,#134E4A);color:#ECFDF5}
+  .v-dark{background:#12161A;color:#E7EDEA}
+  .v-amber{background:linear-gradient(135deg,#92400E,#B45309);color:#FFFBEB}
+  .v-slate{background:linear-gradient(135deg,#1E3A2F,#0F766E);color:#ECFDF5}
+  @media (prefers-color-scheme: dark){ .v-dark{background:#0B0E10} }
+  .visual .mono{font-family:"JetBrains Mono",monospace;font-size:12px;opacity:.9;line-height:1.7;white-space:pre-wrap}
+  .visual .big{font-family:"DM Serif Display",serif;font-size:28px;line-height:1}
+  .card-body{padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .card h3{margin:0;font-size:20px;letter-spacing:-.02em;line-height:1.1}
+  .card h3 a{text-decoration:none}
+  .card h3 a:hover{text-decoration:underline;text-underline-offset:3px}
+  .badge{flex-shrink:0;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;padding:5px 8px;border-radius:999px;background:var(--teal-bg);color:var(--teal);border:1px solid color-mix(in srgb, var(--teal) 22%, transparent);white-space:nowrap}
+  .badge.live{background:var(--amber-bg);color:var(--amber);border-color:color-mix(in srgb, var(--amber) 25%, transparent)}
+  .card p{margin:0;color:var(--muted);font-size:14.5px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+  .tag{font-family:"JetBrains Mono",monospace;font-size:11px;padding:4px 7px;border-radius:6px;background:var(--surface2);border:1px solid var(--line);color:var(--muted)}
+  .links{display:flex;gap:14px;margin-top:auto;padding-top:6px;font-size:13.5px;font-weight:700}
+  .links a{text-decoration:none;color:var(--teal)}
+  .links a:hover{text-decoration:underline;text-underline-offset:3px}
+  /* orderly */
+  .orderly{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+  .orderly-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:6px}
+  .orderly-head h3{margin:0;font-size:19px}
+  .orderly-head p{margin:4px 0 0;color:var(--muted);font-size:14px}
+  .when{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);white-space:nowrap;padding-top:4px}
+  .work-list{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+  @media(max-width:760px){ .work-list{grid-template-columns:1fr} }
+  .work-item{padding:14px 0;border-bottom:1px solid var(--line);display:flex;gap:12px}
+  .work-item:last-child{border-bottom:none}
+  .num{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--teal);font-weight:600;padding-top:2px}
+  .work-item b{display:block;font-size:15px}
+  .work-item span{font-size:14px;color:var(--muted)}
+  /* stack + timeline */
+  .two-col{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
+  @media(max-width:820px){ .two-col{grid-template-columns:1fr} }
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+  .panel h3{margin:0 0 14px;font-size:16px}
+  .stack-group{margin-bottom:16px}
+  .stack-group:last-child{margin-bottom:0}
+  .stack-group label{display:block;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+  .pills{display:flex;flex-wrap:wrap;gap:6px}
+  .pill{font-size:13px;font-weight:600;padding:6px 10px;border-radius:999px;background:var(--surface2);border:1px solid var(--line)}
+  .timeline{list-style:none;margin:0;padding:0}
+  .timeline li{padding:0 0 16px 18px;border-left:2px solid var(--line);position:relative}
+  .timeline li:last-child{padding-bottom:2px}
+  .timeline li::before{content:"";position:absolute;left:-5px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--teal)}
+  .timeline b{display:block;font-size:15px}
+  .timeline .t-when{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--teal);font-weight:600}
+  .timeline p{margin:3px 0 0;font-size:14px;color:var(--muted)}
+  /* more projects */
+  .more{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+  .row{display:flex;justify-content:space-between;gap:16px;padding:15px 18px;border-bottom:1px solid var(--line);align-items:center;flex-wrap:wrap}
+  .row:last-child{border-bottom:none}
+  .row b{font-size:15px}
+  .row p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
+  .row a{font-size:13px;font-weight:700;color:var(--teal);text-decoration:none;white-space:nowrap}
+  .row a:hover{text-decoration:underline}
+  /* footer / contact */
+  .contact{background:var(--ink);color:var(--bg);border-radius:22px;padding:28px;margin:10px 0 8px}
+  .contact h2{color:var(--bg)}
+  .contact p{color:color-mix(in srgb, var(--bg) 72%, transparent);max-width:560px}
+  .contact .btn{background:var(--bg);color:var(--ink);border-color:var(--bg)}
+  .contact .btn.secondary{background:transparent;color:var(--bg);border-color:color-mix(in srgb, var(--bg) 35%, transparent)}
+  footer{padding:18px 0 36px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .reveal{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="mark">RB</span> Ruthvik Bathala</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#projects">Projects</a><a href="#work">Experience</a><a href="#stack">Stack</a><a href="#more">More work</a>
+    </nav>
+    <a class="nav-cta" href="https://github.com/RuthvikBathala" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <!-- HERO -->
+  <div class="hero">
+    <span class="eyebrow"><span class="dot"></span> AI Engineer · Orderly Wellness Corp</span>
+    <h1>I build production AI — and the tooling that makes agents <em>safe to ship.</em></h1>
+    <p class="lede">I'm <strong>Ruthvik Bathala</strong>, an AI Engineer working on production RAG and agent systems. My open-source work focuses on <strong>agent reliability and infrastructure</strong> — recording, replaying, evaluating, and operating agents the way we test and run real software.</p>
+    <div class="hero-actions">
+      <a class="btn" href="#projects">See featured projects ↓</a>
+      <a class="btn secondary" href="https://github.com/RuthvikBathala" target="_blank" rel="noopener">github.com/RuthvikBathala ↗</a>
+    </div>
+    <div class="hero-meta" aria-label="Highlights">
+      <div class="meta-cell"><b>AI Engineer</b><span>Orderly Wellness Corp — since Feb 2026</span></div>
+      <div class="meta-cell"><b>MS, Data Science</b><span>University at Buffalo · Jan 2025 · 3.93 GPA</span></div>
+      <div class="meta-cell"><b>2 live products</b><span>Operon &amp; LayerWise — in production</span></div>
+      <div class="meta-cell"><b>2 OSS tools</b><span>replayagent &amp; mcpporter — MIT, public</span></div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sec-head">
+      <div>
+        <h2>Featured projects</h2>
+        <p>Flagships first: the reliability thesis, then the products running live.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="chip" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" data-filter="oss" aria-pressed="false">Open source</button>
+        <button class="chip" data-filter="live" aria-pressed="false">Live products</button>
+      </div>
+    </div>
+
+    <div class="grid" id="projectGrid">
+      <article class="card reveal" data-kind="oss">
+        <div class="visual v-dark">
+          <div class="mono">$ replayagent run --diff HEAD~1
+✓ 59 tests · trajectory recorded
+→ 2 regressions flagged</div>
+          <div class="big">pytest, for agents.</div>
+        </div>
+        <div class="card-body">
+          <div class="card-top"><h3><a href="https://github.com/RuthvikBathala/replayagent" target="_blank" rel="noopener">replayagent</a></h3><span class="badge">OPEN SOURCE</span></div>
+          <p>Agent eval &amp; regression harness. Record agent trajectories, replay them against model or config changes, and catch regressions in CI — with diff reports and LLM-as-judge evaluation. LangGraph &amp; OpenAI adapters included.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">LangGraph</span><span class="tag">Evals</span><span class="tag">CI</span><span class="tag">59 tests</span></div>
+          <div class="links"><a href="https://github.com/RuthvikBathala/replayagent" target="_blank" rel="noopener">GitHub ↗</a></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-kind="oss">
+        <div class="visual v-teal">
+          <div class="mono">POST /mcp/tools → upstream: github
+cache: HIT · auth: injected
+audit: JSONL · rate: 42/100</div>
+          <div class="big">Kong, for MCP.</div>
+        </div>
+        <div class="card-body">
+          <div class="card-top"><h3><a href="https://github.com/RuthvikBathala/mcpporter" target="_blank" rel="noopener">mcpporter</a></h3><span class="badge">OPEN SOURCE</span></div>
+          <p>MCP control plane in Go. Route across upstream MCP servers from one config — with auth injection, tool-result caching, rate limiting, JSONL audit logging, and an admin status API.</p>
+          <div class="tags"><span class="tag">Go</span><span class="tag">MCP</span><span class="tag">Gateway</span><span class="tag">Caching</span><span class="tag">70 tests w/ subtests</span></div>
+          <div class="links"><a href="https://github.com/RuthvikBathala/mcpporter" target="_blank" rel="noopener">GitHub ↗</a></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-kind="live">
+        <div class="visual v-amber">
+          <div class="mono">OPERON — 9 AI executives
+✓ Proposal ready → awaiting approval
+Human approval queue: 3 pending</div>
+          <div class="big">A startup, run by AI.</div>
+        </div>
+        <div class="card-body">
+          <div class="card-top"><h3><a href="https://github.com/RuthvikBathala/Operon" target="_blank" rel="noopener">Operon</a></h3><span class="badge live">● LIVE</span></div>
+          <p>The AI-run startup OS: one workspace for goals, tasks, docs, customers, and money — run by a team of nine AI executives, with a human approval queue so nothing takes effect without the founder's sign-off.</p>
+          <div class="tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Multi-agent</span><span class="tag">Human-in-the-loop</span></div>
+          <div class="links"><a href="https://operon-os.vercel.app" target="_blank" rel="noopener">Live app ↗</a><a href="https://github.com/RuthvikBathala/Operon" target="_blank" rel="noopener" style="color:var(--muted)">GitHub ↗</a></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-kind="live">
+        <div class="visual v-slate">
+          <div class="mono">LAYERWISE — Today
+Production · Laying rate · Mortality
+AI chat: complete production summary</div>
+          <div class="big">Farms, with an AI copilot.</div>
+        </div>
+        <div class="card-body">
+          <div class="card-top"><h3><a href="https://github.com/RuthvikBathala/LayerWise_Mobile" target="_blank" rel="noopener">LayerWise</a></h3><span class="badge live">● LIVE IN PROD</span></div>
+          <p>Production poultry-farm management platform: multi-shed egg production and sales tracking, dated insights in daily / weekly / monthly / yearly views, and an AI farm chat that leads with a complete production summary.</p>
+          <div class="tags"><span class="tag">FastAPI</span><span class="tag">React Native</span><span class="tag">GCP</span><span class="tag">Playwright CI</span></div>
+          <div class="links"><a href="https://layerwise-one.vercel.app" target="_blank" rel="noopener">Live app ↗</a><a href="https://github.com/RuthvikBathala/LayerWise_Mobile" target="_blank" rel="noopener" style="color:var(--muted)">GitHub ↗</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="work">
+    <div class="sec-head"><div><h2>Production work</h2><p>What I build day-to-day at Orderly — AI systems that have to be accurate, auditable, and safe.</p></div></div>
+    <div class="orderly reveal">
+      <div class="orderly-head">
+        <div><h3>AI Engineer — Orderly Wellness Corp</h3><p>Production RAG, agents, and data systems with eval &amp; reliability controls and human-in-the-loop guardrails for HIPAA / FDA-sensitive workflows.</p></div>
+        <span class="when">FEB 2026 — PRESENT</span>
+      </div>
+      <div class="work-list">
+        <div class="work-item"><span class="num">01</span><div><b>Recruiting-intelligence pipeline</b><span>End-to-end pipeline turning raw recruiting signals into ranked, usable intelligence.</span></div></div>
+        <div class="work-item"><span class="num">02</span><div><b>Text-to-SQL over BigQuery</b><span>Natural-language questions answered from warehouse data, with guardrails on what can be queried.</span></div></div>
+        <div class="work-item"><span class="num">03</span><div><b>Affiliate monitoring</b><span>Automated monitoring systems that watch partner activity and surface what needs attention.</span></div></div>
+        <div class="work-item"><span class="num">04</span><div><b>Eval &amp; reliability controls</b><span>Evaluation harnesses and reliability checks so model changes ship with evidence, not hope.</span></div></div>
+        <div class="work-item"><span class="num">05</span><div><b>HIPAA / FDA guardrails</b><span>Human-in-the-loop approval and safety controls built into AI workflows from the start.</span></div></div>
+        <div class="work-item"><span class="num">06</span><div><b>RAG &amp; agents in production</b><span>LangChain / LangGraph agents and retrieval systems serving real users, not demos.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK + TIMELINE -->
+  <section id="stack">
+    <div class="sec-head"><div><h2>Stack &amp; background</h2></div></div>
+    <div class="two-col">
+      <div class="panel reveal">
+        <h3>What I work with</h3>
+        <div class="stack-group"><label>Languages</label><div class="pills"><span class="pill">Python</span><span class="pill">Go</span><span class="pill">TypeScript</span><span class="pill">SQL</span></div></div>
+        <div class="stack-group"><label>AI &amp; Agents</label><div class="pills"><span class="pill">RAG</span><span class="pill">LangChain</span><span class="pill">LangGraph</span><span class="pill">MCP</span><span class="pill">Vector DBs</span><span class="pill">LLM-as-judge evals</span><span class="pill">Text-to-SQL</span></div></div>
+        <div class="stack-group"><label>Building &amp; Shipping</label><div class="pills"><span class="pill">FastAPI</span><span class="pill">Next.js</span><span class="pill">React Native</span><span class="pill">BigQuery</span><span class="pill">GCP</span><span class="pill">Playwright</span><span class="pill">CI / GitHub Actions</span></div></div>
+      </div>
+      <div class="panel reveal">
+        <h3>Timeline</h3>
+        <ul class="timeline">
+          <li><span class="t-when">FEB 2026 — PRESENT</span><b>AI Engineer, Orderly Wellness Corp</b><p>Production RAG, agents, and AI reliability work.</p></li>
+          <li><span class="t-when">2025 — 2026</span><b>Builder — Operon, LayerWise, replayagent, mcpporter</b><p>Two live products and two open-source agent-infra tools.</p></li>
+          <li><span class="t-when">JAN 2025</span><b>MS in Data Science, University at Buffalo</b><p>Graduated with a 3.93 GPA.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- MORE -->
+  <section id="more">
+    <div class="sec-head"><div><h2>More work</h2><p>Earlier projects — still on GitHub.</p></div></div>
+    <div class="more reveal">
+      <div class="row"><div><b>Legal Advisor / LegalChatbot</b><p>AI legal chatbot — document-grounded Q&amp;A for legal questions.</p></div><a href="https://github.com/RuthvikBathala" target="_blank" rel="noopener">GitHub ↗</a></div>
+      <div class="row"><div><b>Recipe Service</b><p>Recipe service API and app from the data-science-to-engineering transition.</p></div><a href="https://github.com/RuthvikBathala" target="_blank" rel="noopener">GitHub ↗</a></div>
+      <div class="row"><div><b>MCQ Generator</b><p>Generates multiple-choice questions from source material with LLMs.</p></div><a href="https://github.com/RuthvikBathala" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </div>
+
+    <div class="contact reveal">
+      <h2>Want the full picture?</h2>
+      <p>The fastest tour is the code: replayagent and mcpporter are public, and Operon and LayerWise are live — open them and click around.</p>
+      <div class="hero-actions" style="margin-top:18px">
+        <a class="btn" href="https://github.com/RuthvikBathala" target="_blank" rel="noopener">View GitHub ↗</a>
+        <a class="btn secondary" href="https://layerwise-one.vercel.app" target="_blank" rel="noopener">Try LayerWise live ↗</a>
+        <a class="btn secondary" href="https://operon-os.vercel.app" target="_blank" rel="noopener">Try Operon live ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Ruthvik Bathala — AI Engineer · Production RAG, agents &amp; MCP</span>
+    <span>replayagent · mcpporter · Operon · LayerWise</span>
+  </footer>
+</main>
+
+<script>
+(function(){
+  // Project filter
+  var chips = document.querySelectorAll('.chip');
+  var cards = document.querySelectorAll('#projectGrid .card');
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+      chip.setAttribute('aria-pressed','true');
+      var f = chip.getAttribute('data-filter');
+      cards.forEach(function(card){
+        card.hidden = !(f === 'all' || card.getAttribute('data-kind') === f);
+      });
+    });
+  });
+  // Content is visible by default — no scroll-gating.
+})();
+</script>
+</body>
+</html>
